@@ -23,9 +23,9 @@ function processMailFromCount() {
     // スレッド内のメッセージを順に見て送信元アドレスを取得
     for each(var message in messagesInThread){
       mailFrom = message.getFrom();
-      var mailAddress = mailFrom.match(/<.*@.*>/);
+      var mailAddress = mailFrom.match(/<.*@.*>/); // 送信者名 <hogehoge@gmail.com> 形式のメールアドレス部分を抽出
       if (mailAddress != null){
-        mailFrom = mailAddress[0].substring(1,mailAddress[0].length - 1);
+        mailFrom = mailAddress[0].substring(1,mailAddress[0].length - 1); // 角括弧を除いて整形
       }
     　// 送信元アドレスごとの件数をカウントアップ
       if (mailFrom in resultCounts) {
